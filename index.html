@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ECOBOUND</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="game" class="game" aria-live="polite">
+    <div class="bg bg-current" id="bgCurrent"></div>
+    <div class="bg bg-next" id="bgNext"></div>
+    <div class="shade"></div>
+
+    <button class="settings-toggle" id="btnSettingsToggle" title="Ajustes" aria-label="Abrir ajustes">
+      <span aria-hidden="true">&#9881;</span>
+    </button>
+
+    <section id="settingsPanel" class="settings-panel" aria-label="Ajustes de sonido">
+      <button class="mute-button" id="btnMute" type="button">
+        <span aria-hidden="true" id="soundIcon">&#9834;</span>
+        <span id="muteText">Mutear musica</span>
+      </button>
+      <label class="range-row">
+        <span>Volumen</span>
+        <input id="volumeRange" type="range" min="0" max="1" step="0.01" value="0.45" />
+      </label>
+      <button class="settings-link" id="btnMainMenuFromSettings" type="button">Volver al menu principal</button>
+    </section>
+
+    <section id="screenMenu" class="screen screen-menu active">
+      <div class="brand-block">
+        <h1>ECOBOUND</h1>
+        <p>SOBREVIVE. ADAPTATE. RECONSTRUYE.</p>
+      </div>
+      <nav class="menu-actions" aria-label="Menu principal">
+        <button class="panel-button primary" id="btnPlay" type="button">
+          <span class="button-icon" aria-hidden="true">&#9658;</span>
+          <span>Jugar</span>
+        </button>
+        <button class="panel-button" id="btnSettingsMenu" type="button">
+          <span class="button-icon" aria-hidden="true">&#9881;</span>
+          <span>Ajustes</span>
+        </button>
+      </nav>
+    </section>
+
+    <section id="screenIntro" class="screen screen-intro">
+      <article class="dialog narrative">
+        <h2>Laberinto del Futuro</h2>
+        <p>Abren los ojos. La luz los encandila. Un zumbido metalico resuena detras.</p>
+        <p>Una voz suena desde lo alto: "Bienvenidos al Laberinto del Futuro. Su destino dependera de las decisiones que tomen. Solo quienes piensen, colaboren y respondan con sabiduria encontraran la salida hacia un mundo limpio, verde y sostenible."</p>
+        <div class="dialog-actions">
+          <button class="panel-button primary" id="btnStartRun" type="button">
+            <span>Empezar a jugar</span>
+          </button>
+          <button class="panel-button" id="btnBackToMenuFromIntro" type="button">
+            <span>Volver</span>
+          </button>
+        </div>
+      </article>
+    </section>
+
+    <section id="screenQuestion" class="screen screen-question">
+      <div class="top-strip">
+        <span id="zoneLabel">Puerta</span>
+      </div>
+
+      <article class="question-board">
+        <p class="node-type" id="nodeType">Pregunta principal</p>
+        <h2 id="questionTitle"></h2>
+        <p id="questionSituation"></p>
+        <p id="questionText"></p>
+      </article>
+
+      <div class="answer-lanes" id="answers"></div>
+
+      <aside class="score-box" aria-label="Puntaje actual">
+        <span>Puntos</span>
+        <strong id="score">0</strong>
+        <small id="scoreDelta"></small>
+      </aside>
+    </section>
+
+    <section id="screenEnding" class="screen screen-ending">
+      <article class="dialog ending-card">
+        <p class="node-type" id="endingKicker"></p>
+        <h2 id="endingTitle"></h2>
+        <p id="endingText"></p>
+        <button class="panel-button primary" id="btnRestart" type="button">
+          <span>Volver a jugar</span>
+        </button>
+      </article>
+    </section>
+  </main>
+
+  <audio id="bgMusic" loop preload="auto">
+    <source src="assets/audio/ecobound-theme.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="game.js"></script>
+</body>
+</html>
